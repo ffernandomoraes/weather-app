@@ -3,7 +3,7 @@ A simple application that shows the weather of the current location.
 
 ### Demo
 
-Clique (https://weather-app-kappa-ecru.vercel.app/)[here].
+Clique [here](https://weather-app-kappa-ecru.vercel.app/).
 
 ![image](https://user-images.githubusercontent.com/22228470/153615423-17ff7db6-058f-4ff7-87b7-b3b2da907ad9.png)
 

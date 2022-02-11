@@ -71,7 +71,6 @@ const Stats = memo<IProps>(({ className }) => {
 
 export default styled(Stats)`
   display: flex;
-  align-items: center;
   margin-top: 12px;
   flex-wrap: wrap;
 

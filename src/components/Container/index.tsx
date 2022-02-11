@@ -18,7 +18,7 @@ export default styled(Container)`
   width: 100%;
   max-width: ${({ theme }) => theme.CONTAINER.medium}px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 24px;
 
   &.--small {
     max-width: ${({ theme }) => theme.CONTAINER.small}px;

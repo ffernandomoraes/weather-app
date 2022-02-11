@@ -100,7 +100,7 @@ export default styled(Main)`
         z-index: 0;
         border-radius: 100%;
         filter: blur(100px);
-        backdrop-filter: blur(-100px);
+        backdrop-filter: blur(10px);
       }
 
       & svg {

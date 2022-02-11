@@ -66,7 +66,7 @@ const GetStarted = memo<IProps>(({ className }) => {
 export default styled(GetStarted)`
   width: 100%;
   color: white;
-  min-height: 100vh;
+  min-height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -95,13 +95,13 @@ export default styled(GetStarted)`
       z-index: 1;
       border-radius: 100%;
       filter: blur(100px);
-      backdrop-filter: blur(-100px);
+      backdrop-filter: blur(10px);
     }
   }
 
   & .weather-get-started-content {
     & .weather-get-started-title {
-      font-size: 32px;
+      font-size: 30px;
       font-weight: 700;
       letter-spacing: -1px;
       color: ${({ theme }) => theme.colors.title};

@@ -46,6 +46,12 @@ export default styled(Update)`
   top: 16px;
   right: 16px;
 
+  ${({ theme }) => theme.breakpoints.mobile} {
+    right: 0;
+    padding: 0 16px;
+    width: 100%;
+  }
+
   & button {
     display: flex;
     align-items: center;
@@ -60,6 +66,10 @@ export default styled(Update)`
     text-transform: uppercase;
     font-weight: 500;
     font-size: 13px;
+
+    ${({ theme }) => theme.breakpoints.mobile} {
+      width: 100%;
+    }
 
     &:disabled {
       cursor: no-drop;

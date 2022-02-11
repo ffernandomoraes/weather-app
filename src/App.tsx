@@ -3,10 +3,10 @@ import { memo, useMemo } from 'react';
 import { ThemeProvider } from '@emotion/react';
 import theme from 'assets/theme';
 import AlertTemplate from 'components/AlertTemplate';
-import Weather from 'components/Pages/Weather';
+import Weather from 'pages/public/Weather';
 import { transitions, positions, Provider as AlertProvider } from 'react-alert';
 
-const alertOptions = {
+const toastOptions = {
   position: positions.BOTTOM_RIGHT,
   timeout: 5000,
   offset: '24px',
@@ -46,7 +46,7 @@ const App = memo(() => {
 
   return (
     <ThemeProvider theme={theme}>
-      <AlertProvider template={AlertTemplate} {...alertOptions}>
+      <AlertProvider template={AlertTemplate} {...toastOptions}>
         <style dangerouslySetInnerHTML={{ __html: baseStyles }} />
         <Weather />
       </AlertProvider>

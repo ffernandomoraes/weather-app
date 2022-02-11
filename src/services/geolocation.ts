@@ -1,11 +1,7 @@
+import { geoErrors } from 'helpers/consts';
+
 class geolocationService {
   public async getPosition(): Promise<GeolocationPosition> {
-    const ERRORS: { [key: number]: string } = {
-      1: 'O usuário negou a solicitação de geolocalização.',
-      2: 'As informações de localização não estão disponíveis.',
-      3: 'A solicitação para obter a localização do usuário expirou.'
-    };
-
     return await new Promise((resolve, reject) => {
       if (!navigator.geolocation) {
         console.error('[@weather-app] Geolocation is not supported by this browser.');
@@ -15,8 +11,8 @@ class geolocationService {
       navigator.geolocation.getCurrentPosition(
         position => resolve(position),
         err => {
-          if (err?.code && ERRORS[err?.code]) {
-            reject(ERRORS[err.code]);
+          if (err?.code && geoErrors[err?.code]) {
+            reject(geoErrors[err.code]);
             return;
           }
 

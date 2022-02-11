@@ -2,7 +2,7 @@ import { memo, useMemo } from 'react';
 
 import styled from '@emotion/styled';
 import clsx from 'clsx';
-import Icons from 'components/Shared/Icons';
+import Icons from 'components/Icons';
 import { getCurrentIcon } from 'helpers/functions';
 import { FiMapPin } from 'react-icons/fi';
 

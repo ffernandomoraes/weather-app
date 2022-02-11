@@ -2,10 +2,10 @@ import { memo, useCallback, useState } from 'react';
 
 import styled from '@emotion/styled';
 import clsx from 'clsx';
-import Button from 'components/Shared/Button';
-import Container from 'components/Shared/Container';
-import FadeIn from 'components/Shared/FadeIn';
-import Icons from 'components/Shared/Icons';
+import Button from 'components/Button';
+import Container from 'components/Container';
+import FadeIn from 'components/FadeIn';
+import Icons from 'components/Icons';
 import { useAlert } from 'react-alert';
 import GeolocationService from 'services/geolocation';
 

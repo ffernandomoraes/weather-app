@@ -24,6 +24,14 @@ export type IWeatherWind = {
   gust: number;
 };
 
+export type IWeatherSys = {
+  type: number;
+  id: number;
+  country: string;
+  sunrise: number;
+  sunset: number;
+};
+
 export interface IWeather {
   coord: IWeatherCoord;
   weather: IWeatherTime[];
@@ -35,13 +43,7 @@ export interface IWeather {
     all: number;
   };
   dt: number;
-  sys: {
-    type: number;
-    id: number;
-    country: string;
-    sunrise: number;
-    sunset: number;
-  };
+  sys: IWeatherSys;
   timezone: number;
   id: number;
   name: string;

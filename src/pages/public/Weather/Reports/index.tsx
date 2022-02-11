@@ -2,8 +2,8 @@ import { memo } from 'react';
 
 import styled from '@emotion/styled';
 import clsx from 'clsx';
-import Container from 'components/Shared/Container';
-import FadeIn from 'components/Shared/FadeIn';
+import Container from 'components/Container';
+import FadeIn from 'components/FadeIn';
 
 import Main from './Main';
 import Stats from './Stats';

@@ -1,36 +1,28 @@
-import { IIconType } from 'components/Shared/Icons';
+import { IIconType } from 'components/Icons';
+
+import { weatherIconCode } from './consts';
 
 export function getCurrentIcon(code: number): IIconType {
-  const WEATHER_ICON_CODE = {
-    THUNDERSTORM: 200,
-    DRIZZLE: 300,
-    RAIN: 500,
-    SNOW: 600,
-    ATMOSPHERE: 700,
-    CLEAR: 800,
-    CLOUDS: 801
-  };
-
   switch (true) {
-    case code >= WEATHER_ICON_CODE.THUNDERSTORM && code < WEATHER_ICON_CODE.DRIZZLE:
+    case code >= weatherIconCode.THUNDERSTORM && code < weatherIconCode.DRIZZLE:
       return 'thunderstorm';
 
-    case code >= WEATHER_ICON_CODE.DRIZZLE && code < WEATHER_ICON_CODE.RAIN:
+    case code >= weatherIconCode.DRIZZLE && code < weatherIconCode.RAIN:
       return 'heavy-showers';
 
-    case code >= WEATHER_ICON_CODE.RAIN && code < WEATHER_ICON_CODE.SNOW:
+    case code >= weatherIconCode.RAIN && code < weatherIconCode.SNOW:
       return 'heavy-showers';
 
-    case code >= WEATHER_ICON_CODE.SNOW && code < WEATHER_ICON_CODE.ATMOSPHERE:
+    case code >= weatherIconCode.SNOW && code < weatherIconCode.ATMOSPHERE:
       return 'snow';
 
-    case code >= WEATHER_ICON_CODE.ATMOSPHERE && code < WEATHER_ICON_CODE.CLEAR:
+    case code >= weatherIconCode.ATMOSPHERE && code < weatherIconCode.CLEAR:
       return 'cloudy';
 
-    case code === WEATHER_ICON_CODE.CLEAR:
+    case code === weatherIconCode.CLEAR:
       return 'clear';
 
-    case code >= WEATHER_ICON_CODE.CLOUDS:
+    case code >= weatherIconCode.CLOUDS:
       return 'cloudy';
     default:
       return 'cloudy';

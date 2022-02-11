@@ -1,33 +1,36 @@
+export type IWeatherCoord = { lon: number; lat: number };
+
+export type IWeatherTemperature = {
+  temp: number;
+  feels_like: number;
+  temp_min: number;
+  temp_max: number;
+  pressure: number;
+  humidity: number;
+  sea_level: number;
+  grnd_level: number;
+};
+
+export type IWeatherTime = {
+  id: number;
+  main: string;
+  description: string;
+  icon: string;
+};
+
+export type IWeatherWind = {
+  speed: number;
+  deg: number;
+  gust: number;
+};
+
 export interface IWeather {
-  coord: {
-    lon: number;
-    lat: number;
-  };
-  weather: [
-    {
-      id: number;
-      main: string;
-      description: string;
-      icon: string;
-    }
-  ];
+  coord: IWeatherCoord;
+  weather: IWeatherTime[];
   base: string;
-  main: {
-    temp: number;
-    feels_like: number;
-    temp_min: number;
-    temp_max: number;
-    pressure: number;
-    humidity: number;
-    sea_level: number;
-    grnd_level: number;
-  };
+  main: IWeatherTemperature;
   visibility: number;
-  wind: {
-    speed: number;
-    deg: number;
-    gust: number;
-  };
+  wind: IWeatherWind;
   clouds: {
     all: number;
   };

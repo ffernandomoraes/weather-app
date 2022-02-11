@@ -15,12 +15,12 @@ const Button = memo<IButtonProps>(({ className, disabled, ...rest }) => {
 });
 
 export default styled(Button)`
-  min-width: 150px;
+  min-width: 160px;
   text-align: center;
   border: 0;
   background: ${({ theme }) => theme.colors.button.main};
   border-radius: ${({ theme }) => theme.spacing()}px;
-  padding: ${({ theme }) => theme.spacing(2)}px ${({ theme }) => theme.spacing(4)}px;
+  padding: ${({ theme }) => theme.spacing(2)}px ${({ theme }) => theme.spacing(6)}px;
   height: 60px;
   color: white;
   font-size: 16px;

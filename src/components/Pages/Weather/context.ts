@@ -4,7 +4,14 @@ import { IWeather } from 'interfaces/weather';
 
 interface IWeatherContext {
   weather: IWeather;
-  setCurrentWeather: (value: IWeather) => void;
+  position: GeolocationPosition;
+
+  handleGetWeather: (
+    location: GeolocationPosition,
+    successCallback?: () => void,
+    errorCallback?: () => void
+  ) => Promise<void>;
+
   nextStep: () => void;
 }
 

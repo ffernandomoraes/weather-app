@@ -20,8 +20,14 @@ export async function request(options: AxiosRequestConfig): Promise<AxiosRespons
         ...options.headers
       }
     });
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    const { data } = error.response;
+
+    if (data.message) {
+      throw new Error(data.message);
+    }
+
+    throw new Error(error.message);
   }
 }
 

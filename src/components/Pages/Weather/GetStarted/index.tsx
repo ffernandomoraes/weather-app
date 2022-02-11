@@ -6,8 +6,8 @@ import Button from 'components/Shared/Button';
 import Container from 'components/Shared/Container';
 import FadeIn from 'components/Shared/FadeIn';
 import Icons from 'components/Shared/Icons';
+import { useAlert } from 'react-alert';
 import GeolocationService from 'services/geolocation';
-import WeatherService from 'services/weather';
 
 import { useWeatherContext } from '../context';
 
@@ -16,36 +16,25 @@ interface IProps {
 }
 
 const GetStarted = memo<IProps>(({ className }) => {
-  const { setCurrentWeather, nextStep } = useWeatherContext();
+  const toast = useAlert();
+  const { nextStep, handleGetWeather } = useWeatherContext();
 
   const [loading, setLoading] = useState(false);
-
-  const handleGetWeather = useCallback(
-    async (location: GeolocationPosition) => {
-      try {
-        const { coords } = location;
-        const response = await WeatherService.getCurrentWeather(coords.latitude, coords.longitude);
-        setCurrentWeather(response);
-        nextStep();
-      } catch (error) {
-        console.log(error);
-        setLoading(false);
-      }
-    },
-    [nextStep, setCurrentWeather]
-  );
 
   const handleClickGetLocation = useCallback(async () => {
     setLoading(true);
 
     try {
       const position = await GeolocationService.getPosition();
-      handleGetWeather(position);
+
+      handleGetWeather(position, () => {
+        nextStep();
+      });
     } catch (error) {
-      console.log(error);
+      toast.error(error);
       setLoading(false);
     }
-  }, [handleGetWeather]);
+  }, [handleGetWeather, nextStep, toast]);
 
   return (
     <div className={clsx('weather-get-started', className)}>
@@ -64,7 +53,7 @@ const GetStarted = memo<IProps>(({ className }) => {
 
             <div className='weather-get-started-button'>
               <Button disabled={loading} onClick={handleClickGetLocation}>
-                {loading ? 'Carregando...' : 'Começar'}
+                {loading ? 'Buscando dados...' : 'Começar'}
               </Button>
             </div>
           </div>
@@ -105,7 +94,8 @@ export default styled(GetStarted)`
       background: #5b6eff;
       z-index: 1;
       border-radius: 100%;
-      filter: blur(120px);
+      filter: blur(100px);
+      backdrop-filter: blur(-100px);
     }
   }
 

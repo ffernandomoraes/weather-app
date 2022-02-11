@@ -1,10 +1,11 @@
+import { IWeather } from 'interfaces/weather';
 import { API_KEY } from 'settings';
 
 import api from './api';
 
 class weatherService {
   public async getCurrentWeather(lat: number, lon: number) {
-    const request = await api.get('/weather', {
+    const request = await api.get<IWeather>('/weather', {
       lat,
       lon,
       lang: 'pt_br',

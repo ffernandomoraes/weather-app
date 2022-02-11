@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 
 import styled from '@emotion/styled';
 import clsx from 'clsx';
@@ -15,12 +15,17 @@ interface IProps {
 const Main = memo<IProps>(({ className }) => {
   const { weather } = useWeatherContext();
 
-  const temperature = Math.ceil(weather.main.temp);
+  const temperature = useMemo(() => Math.ceil(weather.main.temp), [weather.main.temp]);
+  const temperatureMin = useMemo(() => Math.ceil(weather.main.temp_min), [weather.main.temp_min]);
+  const temperatureMax = useMemo(() => Math.ceil(weather.main.temp_max), [weather.main.temp_max]);
 
   return (
     <div className={clsx('weather-reports-main', className)}>
       <div className='weather-reports-main-city'>
-        <FiMapPin /> <span>{weather.name}</span>
+        <FiMapPin />{' '}
+        <span>
+          {weather.name}, {weather.sys.country}
+        </span>
       </div>
 
       <div className='weather-reports-main-weather'>
@@ -30,6 +35,20 @@ const Main = memo<IProps>(({ className }) => {
 
         <div className='weather-reports-main-weather-temperature'>
           {temperature} <span>°</span>
+        </div>
+
+        <div className='weather-reports-main-weather-max-min'>
+          <div className='min'>
+            min {temperatureMin}
+            <span>°</span>
+          </div>
+
+          <div className='divider' />
+
+          <div className='max'>
+            max {temperatureMax}
+            <span>°</span>
+          </div>
         </div>
 
         <div className='weather-reports-main-weather-description'>{weather.weather[0].description}</div>
@@ -48,12 +67,14 @@ export default styled(Main)`
     align-items: center;
     justify-content: center;
     position: relative;
-    z-index: 2;
+    z-index: 5;
 
     & span {
       margin-left: 10px;
-      font-weight: 300;
+      font-weight: 400;
+      letter-spacing: 0.5px;
       font-size: 14px;
+      text-transform: uppercase;
     }
   }
 
@@ -69,8 +90,8 @@ export default styled(Main)`
 
       &::after {
         content: '';
-        width: 200px;
-        height: 200px;
+        width: 300px;
+        height: 300px;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -78,12 +99,13 @@ export default styled(Main)`
         background: #5b6eff;
         z-index: 0;
         border-radius: 100%;
-        filter: blur(120px);
+        filter: blur(100px);
+        backdrop-filter: blur(-100px);
       }
 
       & svg {
-        width: 250px;
-        height: 250px;
+        width: 220px;
+        height: 220px;
         position: relative;
         z-index: 2;
       }
@@ -106,10 +128,32 @@ export default styled(Main)`
       }
     }
 
+    & .weather-reports-main-weather-max-min {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: ${({ theme }) => theme.colors.description};
+
+      & .min,
+      & .max {
+        & span {
+          margin-left: 2px;
+        }
+      }
+
+      & .divider {
+        width: 12px;
+        height: 1px;
+        background: #fff;
+        margin: 0 12px;
+      }
+    }
+
     & .weather-reports-main-weather-description {
       text-transform: uppercase;
       font-size: 15px;
-      margin-top: 8px;
+      margin-top: 16px;
     }
   }
 `;

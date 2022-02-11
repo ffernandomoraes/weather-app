@@ -2,7 +2,16 @@ import { memo, useMemo } from 'react';
 
 import { ThemeProvider } from '@emotion/react';
 import theme from 'assets/theme';
+import AlertTemplate from 'components/AlertTemplate';
 import Weather from 'components/Pages/Weather';
+import { transitions, positions, Provider as AlertProvider } from 'react-alert';
+
+const alertOptions = {
+  position: positions.BOTTOM_RIGHT,
+  timeout: 5000,
+  offset: '24px',
+  transition: transitions.FADE
+};
 
 const App = memo(() => {
   const baseStyles = useMemo(
@@ -37,9 +46,10 @@ const App = memo(() => {
 
   return (
     <ThemeProvider theme={theme}>
-      <style dangerouslySetInnerHTML={{ __html: baseStyles }} />
-
-      <Weather />
+      <AlertProvider template={AlertTemplate} {...alertOptions}>
+        <style dangerouslySetInnerHTML={{ __html: baseStyles }} />
+        <Weather />
+      </AlertProvider>
     </ThemeProvider>
   );
 });

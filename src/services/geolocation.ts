@@ -14,7 +14,7 @@ class geolocationService {
 
       navigator.geolocation.getCurrentPosition(
         position => resolve(position),
-        (err: GeolocationPositionError) => {
+        err => {
           if (err?.code && ERRORS[err?.code]) {
             reject(ERRORS[err.code]);
             return;

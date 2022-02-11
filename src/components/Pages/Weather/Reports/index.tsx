@@ -5,29 +5,32 @@ import clsx from 'clsx';
 import Container from 'components/Shared/Container';
 import FadeIn from 'components/Shared/FadeIn';
 
-import { useWeatherContext } from '../context';
 import Main from './Main';
+import Stats from './Stats';
+import Update from './Update';
 
 interface IProps {
   className?: string;
 }
 
 const Reports = memo<IProps>(({ className }) => {
-  const { weather } = useWeatherContext();
-
-  console.log(weather);
-
   return (
-    <div className={clsx('weather-app', className)}>
-      <FadeIn>
-        <Container>
+    <div className={clsx('weather-reports', className)}>
+      <Container>
+        <FadeIn>
           <Main />
-        </Container>
-      </FadeIn>
+          <Stats />
+          <Update />
+        </FadeIn>
+      </Container>
     </div>
   );
 });
 
 export default styled(Reports)`
-  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+  width: 100%;
 `;

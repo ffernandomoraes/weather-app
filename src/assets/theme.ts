@@ -13,10 +13,16 @@ const colors = {
   button: {
     main: '#0194ff',
     hover: '#0766ab'
-  }
+  },
+  success: '#3c883f',
+  error: '#b32e2e'
 };
 
 const transition = '0.15s linear';
+
+const breakpoints = {
+  mobile: '@media screen and (max-width: 768px)'
+};
 
 interface ITheme {
   unit: typeof unit;
@@ -24,6 +30,7 @@ interface ITheme {
   colors: typeof colors;
   transition: typeof transition;
   CONTAINER: typeof CONTAINER;
+  breakpoints: typeof breakpoints;
 }
 
 declare module '@emotion/react' {
@@ -36,7 +43,8 @@ const theme: ITheme = {
   spacing,
   colors,
   transition,
-  CONTAINER
+  CONTAINER,
+  breakpoints
 };
 
 export default theme;

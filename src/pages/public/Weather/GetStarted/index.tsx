@@ -66,11 +66,15 @@ const GetStarted = memo<IProps>(({ className }) => {
 export default styled(GetStarted)`
   width: 100%;
   color: white;
-  min-height: 100%;
+  min-height: calc(90vh - 40px);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  ${({ theme }) => theme.breakpoints.mobile} {
+    min-height: 100%;
+  }
 
   & .weather-get-started-icon {
     position: relative;

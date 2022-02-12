@@ -1,20 +1,20 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { API } from 'settings';
+import { API as baseURL } from 'settings';
 
-export async function get<T = any>(
+export async function get<T = unknown>(
   url: AxiosRequestConfig['url'],
   params?: AxiosRequestConfig['params'],
   headers?: AxiosRequestConfig['headers']
 ): Promise<AxiosResponse<T> | undefined> {
-  return await request({ url, method: 'GET', params, headers });
+  return await request<T>({ url, method: 'GET', params, headers });
 }
 
-export async function request(options: AxiosRequestConfig): Promise<AxiosResponse<any, any> | undefined> {
+export async function request<T = unknown>(options: AxiosRequestConfig): Promise<AxiosResponse<T> | undefined> {
   try {
     return await axios({
       ...options,
       ...options.params,
-      baseURL: API,
+      baseURL,
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
         ...options.headers
@@ -23,7 +23,7 @@ export async function request(options: AxiosRequestConfig): Promise<AxiosRespons
   } catch (error) {
     const { data } = error.response;
 
-    if (data.message) {
+    if (data?.message) {
       throw new Error(data.message);
     }
 

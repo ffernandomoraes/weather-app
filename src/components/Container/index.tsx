@@ -16,11 +16,11 @@ const Container = memo<IProps>(({ className, size, ...rest }) => {
 
 export default styled(Container)`
   width: 100%;
-  max-width: ${({ theme }) => theme.CONTAINER.medium}px;
+  max-width: ${({ theme }) => theme.container.MEDIUM}px;
   margin: 0 auto;
   padding: 0 24px;
 
   &.--small {
-    max-width: ${({ theme }) => theme.CONTAINER.small}px;
+    max-width: ${({ theme }) => theme.container.SMALL}px;
   }
 `;

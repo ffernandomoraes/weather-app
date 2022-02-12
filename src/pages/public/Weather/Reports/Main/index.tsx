@@ -18,6 +18,8 @@ const Main = memo<IProps>(({ className }) => {
   const temperature = useMemo(() => Math.ceil(weather.main.temp), [weather.main.temp]);
   const temperatureMin = useMemo(() => Math.ceil(weather.main.temp_min), [weather.main.temp_min]);
   const temperatureMax = useMemo(() => Math.ceil(weather.main.temp_max), [weather.main.temp_max]);
+  const icon = useMemo(() => weather.weather[0]?.id ?? 0, [weather.weather]);
+  const description = useMemo(() => weather.weather[0]?.description ?? '', [weather.weather]);
 
   return (
     <div className={clsx('weather-reports-main', className)}>
@@ -30,7 +32,7 @@ const Main = memo<IProps>(({ className }) => {
 
       <div className='weather-reports-main-weather'>
         <div className='weather-reports-main-weather-icon'>
-          <Icons name={getCurrentIcon(weather.weather[0].id)} />
+          <Icons name={getCurrentIcon(icon)} />
         </div>
 
         <div className='weather-reports-main-weather-temperature'>
@@ -51,7 +53,7 @@ const Main = memo<IProps>(({ className }) => {
           </div>
         </div>
 
-        <div className='weather-reports-main-weather-description'>{weather.weather[0].description}</div>
+        <div className='weather-reports-main-weather-description'>{description}</div>
       </div>
     </div>
   );

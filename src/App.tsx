@@ -1,4 +1,4 @@
-import { memo, useMemo } from 'react';
+import { useMemo } from 'react';
 
 import { ThemeProvider } from '@emotion/react';
 import theme from 'assets/theme';
@@ -13,7 +13,7 @@ const toastOptions = {
   transition: transitions.FADE
 };
 
-const App = memo(() => {
+const App = () => {
   const baseStyles = useMemo(
     () => `
       * {
@@ -52,6 +52,6 @@ const App = memo(() => {
       </AlertProvider>
     </ThemeProvider>
   );
-});
+};
 
 export default App;

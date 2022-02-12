@@ -4,7 +4,7 @@ class geolocationService {
   public async getPosition(): Promise<GeolocationPosition> {
     return await new Promise((resolve, reject) => {
       if (!navigator.geolocation) {
-        console.error('[@weather-app] Geolocation is not supported by this browser.');
+        reject('[@weather-app] Geolocation is not supported by this browser.');
         return;
       }
 

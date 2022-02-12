@@ -14,7 +14,7 @@ interface IProps {
 const Stats = memo<IProps>(({ className }) => {
   const { weather } = useWeatherContext();
 
-  const feels_like = useMemo(() => Math.ceil(weather.main.feels_like), [weather.main.feels_like]);
+  const feelsLike = useMemo(() => Math.ceil(weather.main.feels_like), [weather.main.feels_like]);
 
   return (
     <div className={clsx('reports-stats', className)}>
@@ -24,7 +24,7 @@ const Stats = memo<IProps>(({ className }) => {
         </div>
 
         <div className='reports-stats-item-value'>
-          {feels_like} <span>graus</span>
+          {feelsLike} <span>graus</span>
         </div>
 
         <div className='reports-stats-item-title'>Sensação térmica</div>

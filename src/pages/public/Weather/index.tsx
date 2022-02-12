@@ -15,7 +15,7 @@ interface IProps {
   className?: string;
 }
 
-export type IStep = 'get-started' | 'report';
+export type IStep = 'get-started' | 'reports';
 
 const Weather = memo<IProps>(({ className }) => {
   const toast = useAlert();
@@ -34,7 +34,7 @@ const Weather = memo<IProps>(({ className }) => {
     StorageService.setValue('position', value);
   }, []);
 
-  const nextStep = useCallback(() => setStep('report'), []);
+  const nextStep = useCallback(() => setStep('reports'), []);
 
   const handleGetWeather = useCallback(
     async (location: GeolocationPosition, successCallback?: () => void, errorCallback?: () => void) => {
@@ -56,7 +56,7 @@ const Weather = memo<IProps>(({ className }) => {
     <WeatherProvider value={{ weather, position, nextStep, handleGetWeather }}>
       <div className={clsx('weather-app', className)}>
         {step === 'get-started' && <GetStarted />}
-        {step === 'report' && <Reports />}
+        {step === 'reports' && <Reports />}
       </div>
     </WeatherProvider>
   );

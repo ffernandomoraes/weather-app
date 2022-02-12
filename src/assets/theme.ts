@@ -2,9 +2,9 @@ const unit = 4;
 
 const spacing = (value = 1) => unit * value;
 
-const CONTAINER = {
-  small: 400,
-  medium: 768
+const container = {
+  SMALL: 400,
+  MEDIUM: 768
 };
 
 const colors = {
@@ -29,7 +29,7 @@ interface ITheme {
   spacing: typeof spacing;
   colors: typeof colors;
   transition: typeof transition;
-  CONTAINER: typeof CONTAINER;
+  container: typeof container;
   breakpoints: typeof breakpoints;
 }
 
@@ -43,7 +43,7 @@ const theme: ITheme = {
   spacing,
   colors,
   transition,
-  CONTAINER,
+  container,
   breakpoints
 };
 

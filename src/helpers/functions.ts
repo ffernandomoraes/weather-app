@@ -2,7 +2,7 @@ import { IIconType } from 'components/Icons';
 
 import { weatherIconCode } from './consts';
 
-export function getCurrentIcon(code: number): IIconType {
+export function getCurrentIcon(code = 0): IIconType {
   switch (true) {
     case code >= weatherIconCode.THUNDERSTORM && code < weatherIconCode.DRIZZLE:
       return 'thunderstorm';

@@ -25,42 +25,42 @@ This architecture is not linked to any state management libraries.
 ├─ docker/
 │   ├─ prod/
 │   └─ dev/                      
-├─ docs/                         # Documentação
+├─ docs/                        # Documentation
 ├─ public/
 ├─ scripts/
 ├─ src/
-│   ├─ assets/                  # Imagens, fontes, temas
+│   ├─ assets/                  # Images, fonts, themes
 │   ├─ components/              # Componentes compartilhados
 │   │   └─ Example/
 │   │       └─ index.tsx
-│   ├─ declarations/            # Declarações e alterações de tipagem
+│   ├─ declarations/            # Shared components
 │   │   └─ extra.d.ts
-│   ├─ helpers/                 # Valores e funções padrões do app
+│   ├─ helpers/                 # Default values and app functions
 │   │   ├─ consts.ts
 │   │   ├─ enums.ts
 │   │   └─ functions.ts
-│   ├─ hooks/                   # Hooks personalizados
+│   ├─ hooks/                   # custom Hooks
 │   │   └─ useCustomHook.ts
 │   ├─ interfaces/
 │   │   └─ User/
 │   │       └─ index.ts
 │   ├─ pages/
-│   │   ├─ private/             # Páginas privadas
+│   │   ├─ private/             # Private pages
 │   │   │   ├─ Dashboard/
 │   │   │   │   └ index.tsx
-│   │   │   └─ index.tsx        # Arquivo de rotas privadas e lógicas de segurança
-│   │   ├─ public/              # Páginas publicas
+│   │   │   └─ index.tsx        # Private route file and security logic
+│   │   ├─ public/              # Public pages
 │   │   │   └─ Auth/
 │   │   │       └─ index.tsx
-│   │   └─ routes.tsx           # Arquivo de rotas públicas
+│   │   └─ routes.tsx           # Public routes file
 │   ├─ services/
 │   │   ├─ User/
 │   │   │   └─ index.ts
-│   │   └─ Service.ts           # Arquivo base que possuem helpers para outras services
+│   │   └─ Service.ts           # Base file that have helpers for other services
 │   ├─ tests/
 │   ├─ App.tsx
 │   ├─ index.tsx
-│   └─ settings.ts              # Arquivo manipulador de variaveis de ambiente
+│   └─ settings.ts              # Environment variable handler file
 ├─ .editorconfig
 ├─ .env.development
 ├─ .env.production

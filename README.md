@@ -86,3 +86,8 @@ yarn start
 ```
 
 see the result at: http://localhost:3000
+
+### Test
+```sh
+yarn test
+```

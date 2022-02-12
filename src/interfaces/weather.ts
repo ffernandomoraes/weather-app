@@ -1,6 +1,9 @@
-export type IWeatherCoord = { lon: number; lat: number };
+export interface IWeatherCoord {
+  lon: number;
+  lat: number;
+}
 
-export type IWeatherTemperature = {
+export interface IWeatherTemperature {
   temp: number;
   feels_like: number;
   temp_min: number;
@@ -9,28 +12,28 @@ export type IWeatherTemperature = {
   humidity: number;
   sea_level: number;
   grnd_level: number;
-};
+}
 
-export type IWeatherTime = {
+export interface IWeatherTime {
   id: number;
   main: string;
   description: string;
   icon: string;
-};
+}
 
-export type IWeatherWind = {
+export interface IWeatherWind {
   speed: number;
   deg: number;
   gust: number;
-};
+}
 
-export type IWeatherSys = {
+export interface IWeatherSys {
   type: number;
   id: number;
   country: string;
   sunrise: number;
   sunset: number;
-};
+}
 
 export interface IWeather {
   coord: IWeatherCoord;

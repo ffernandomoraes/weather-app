@@ -22,8 +22,6 @@ export function getCurrentIcon(code = 0): IIconType {
     case code === weatherIconCode.CLEAR:
       return 'clear';
 
-    case code >= weatherIconCode.CLOUDS:
-      return 'cloudy';
     default:
       return 'cloudy';
   }
